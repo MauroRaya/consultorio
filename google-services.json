@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "83665383581",
+    "project_id": "desafioconsultorio",
+    "storage_bucket": "desafioconsultorio.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83665383581:android:a3031b86788e4bf0d9a474",
+        "android_client_info": {
+          "package_name": "br.unisanta.consultorio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWMCD0SgnTDqSMNS6I4hn7YWXn1LyWbF0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-package br.unisanta.appfirebase
+package br.unisanta.consultorio
 
 import android.os.Bundle
 import android.widget.Toast
@@ -33,8 +33,6 @@ class MainActivity : AppCompatActivity() {
     private fun createSignInIntent() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.GoogleBuilder().build(),
-            AuthUI.IdpConfig.AnonymousBuilder().build()
         )
 
         val signInIntent = AuthUI.getInstance()

@@ -17,6 +17,8 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class MainActivity : AppCompatActivity() {
     private val signInLauncher = registerForActivityResult(
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val schedulesDao: ScheduleDao = ScheduleDao()
+
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,13 +55,13 @@ class MainActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             val name = edtName.text.toString()
 
-            schedulesDao.insert(
-                Schedule(name)
+            val schedule = hashMapOf(
+                "name" to name
             )
 
-            for (schedule in schedulesDao.getAll()) {
-                Log.i("NOME AAAAAAAAAAAAAAA", schedule.name)
-            }
+            db
+                .collection("schedules")
+                .add(schedule)
         }
 
         fabSwitchRole.setOnClickListener {

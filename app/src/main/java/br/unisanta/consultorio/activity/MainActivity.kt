@@ -1,5 +1,6 @@
 package br.unisanta.consultorio.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -36,11 +37,13 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val btnSignOut = findViewById<FloatingActionButton>(R.id.fab_sign_out)
+        val fabSignOut = findViewById<FloatingActionButton>(R.id.fab_sign_out)
+        val fabSwitchRole = findViewById<FloatingActionButton>(R.id.fab_switch_role)
+
         val btnRegister = findViewById<Button>(R.id.btn_register)
         val edtName = findViewById<EditText>(R.id.edt_name)
 
-        btnSignOut.setOnClickListener {
+        fabSignOut.setOnClickListener {
             signOut()
             createSignInIntent()
         }
@@ -55,6 +58,11 @@ class MainActivity : AppCompatActivity() {
             for (schedule in schedulesDao.getAll()) {
                 Log.i("NOME AAAAAAAAAAAAAAA", schedule.name)
             }
+        }
+
+        fabSwitchRole.setOnClickListener {
+            val intent = Intent(this, SchedulesActivity::class.java)
+            startActivity(intent)
         }
 
         createSignInIntent()

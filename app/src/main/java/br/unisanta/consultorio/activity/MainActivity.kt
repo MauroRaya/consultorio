@@ -1,4 +1,4 @@
-package br.unisanta.consultorio
+package br.unisanta.consultorio.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.unisanta.consultorio.R
 import br.unisanta.consultorio.dao.ScheduleDao
 import br.unisanta.consultorio.model.Schedule
 import com.firebase.ui.auth.AuthUI

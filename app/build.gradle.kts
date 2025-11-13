@@ -52,4 +52,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.firebaseui:firebase-ui-auth:9.0.0")
+    implementation("com.google.firebase:firebase-firestore")
 }

@@ -1,11 +1,16 @@
 package br.unisanta.consultorio
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import br.unisanta.consultorio.dao.ScheduleDao
+import br.unisanta.consultorio.model.Schedule
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
@@ -18,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         this.onSignInResult(res)
     }
 
+    private val schedulesDao: ScheduleDao = ScheduleDao()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -29,10 +36,24 @@ class MainActivity : AppCompatActivity() {
         }
 
         val btnSignOut = findViewById<FloatingActionButton>(R.id.fab_sign_out)
+        val btnRegister = findViewById<Button>(R.id.btn_register)
+        val edtName = findViewById<EditText>(R.id.edt_name)
 
         btnSignOut.setOnClickListener {
             signOut()
             createSignInIntent()
+        }
+
+        btnRegister.setOnClickListener {
+            val name = edtName.text.toString()
+
+            schedulesDao.insert(
+                Schedule(name)
+            )
+
+            for (schedule in schedulesDao.getAll()) {
+                Log.i("NOME AAAAAAAAAAAAAAA", schedule.name)
+            }
         }
 
         createSignInIntent()
